@@ -99,7 +99,7 @@ describe('Calculator', () => {
     expect(runningTotal.text()).toEqual('3785');
   });
 
-  it('should chain multiple operations together (90+8)/ 4', () => {
+  it('should chain multiple operations together (90+8.6) / 4', () => {
     button9.simulate('click');
     button0.simulate('click');
     operator_add.simulate('click');     // 90 + 8.6
