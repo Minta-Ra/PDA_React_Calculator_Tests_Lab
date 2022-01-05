@@ -78,5 +78,24 @@ describe('Calculator', () => {
     expect(runningTotal.text()).toEqual('15');
   });
 
+  it('should divide 21 by 7 and get 3', () => {
+    button2.simulate('click');
+    button1.simulate('click');
+    operator_divide.simulate('click');
+    button7.simulate('click');
+    operator_equals.simulate('click');
+    const runningTotal = container.find('#running-total');
+    expect(runningTotal.text()).toEqual('3');
+  });
+
+  it('should concatenate multiple number button clicks', () => {
+    button3.simulate('click');
+    button7.simulate('click');
+    button8.simulate('click');
+    button5.simulate('click');
+    const runningTotal = container.find('#running-total');
+    expect(runningTotal.text()).toEqual('3785');
+  });
+  
 });
 
