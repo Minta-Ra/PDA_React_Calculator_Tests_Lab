@@ -9,6 +9,7 @@ configure({adapter: new Adapter()});
 
 describe('Calculator', () => {
   let container;
+  let button0;
   let button1;
   let button2;
   let button3;
@@ -27,6 +28,7 @@ describe('Calculator', () => {
 
   beforeEach(() => {
     container = mount(<Calculator/>)
+    button0 = container.find('#number0');
     button1 = container.find('#number1');
     button2 = container.find('#number2');
     button3 = container.find('#number3');
@@ -96,6 +98,20 @@ describe('Calculator', () => {
     const runningTotal = container.find('#running-total');
     expect(runningTotal.text()).toEqual('3785');
   });
+
+  it('should chain multiple operations together (20+8)/ 5', () => {
+    button9.simulate('click');
+    button0.simulate('click');
+    operator_add.simulate('click');     // 90 + 8.6
+    button8.simulate('click');
+    decimal.simulate('click');
+    button6.simulate('click');
+    operator_divide.simulate('click');  // 98.6 / 4
+    button4.simulate('click');
+    operator_equals.simulate('click');
+    const runningTotal = container.find('#running-total');
+    expect(runningTotal.text()).toEqual('24.65');
+  })
   
 });
 
